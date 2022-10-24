@@ -31,13 +31,19 @@ std::vector<std::vector<float>> QuickSort::partition(std::vector<float> vectorP,
 	int pivotIndex = pivotIndexP;
 	// Get pivot's value
 	float pivotValue = vectorP[pivotIndex];
+	// Set maximum i
+	int maxI = vectorP.size();
 
 	// Browse the list
-	for (int i = 0; i < vectorP.size(); i++)
+	for (int i = 0; i < maxI;)
 	{
 		if (pivotValue < vectorP[i]) {
 			move(vectorP, pivotIndex, i);
 			pivotIndex--;
+			maxI--;
+		}
+		else {
+			i++;
 		}
 	}
 
