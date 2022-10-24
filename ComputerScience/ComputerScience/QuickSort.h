@@ -10,7 +10,7 @@ public:
 	~QuickSort();
 
 	static void move(std::vector<float>& vectorP, int fromIndexP, int toIndexP);
-	static std::vector<std::vector<float>> partition(std::vector<float> vectorP, int pivotIndexP);
+	static std::vector<std::vector<float>> partition(std::vector<float> vectorP, int minIndexP, int pivotIndexP);
 
 	static std::vector<float> sortVector(std::vector<float> vectorP, int pivotIndexP);
 

@@ -26,7 +26,7 @@ void QuickSort::move(std::vector<float>& vectorP, int fromIndexP, int toIndexP)
 	vectorP[fromIndexP - 1] = fromValue;
 }
 
-std::vector<std::vector<float>> QuickSort::partition(std::vector<float> vectorP, int pivotIndexP) {
+std::vector<std::vector<float>> QuickSort::partition(std::vector<float> vectorP, int minIndexP, int pivotIndexP) {
 	// Set a new pivot index variable
 	int pivotIndex = pivotIndexP;
 	// Get pivot's value
@@ -81,7 +81,7 @@ std::vector<float> QuickSort::sortVector(std::vector<float> vectorP, int pivotIn
 {
 	// Get pivot's value
 	float pivotValue = vectorP[pivotIndexP];
-	std::cout << "Pivot value: " << pivotValue << std::endl;
+	//std::cout << "Pivot value: " << pivotValue << std::endl;
 
 	std::vector<std::vector<float>> firstPartition = partition(vectorP, pivotIndexP);
 

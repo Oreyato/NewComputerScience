@@ -31,15 +31,13 @@ int main() {
 	// Initialise randomness seed
 	srand((unsigned)time(0));
 	// Create the vector to sort
-	//vector<float> floatVector;
+	vector<float> floatVector;
 	// Initialise the vector's max size
 	int maxSize = 5;
 	// Initialise the value's range
 	float range = 50.0f;
 	// And initialise it
-	//initVector(floatVector, maxSize, -range, range);
-	 
-	vector<float> floatVector = {36, 19, -25, 49, -4};
+	initVector(floatVector, maxSize, -range, range);
 
 	cout << "Initial vector:" << endl;
 	// Print initial vector
@@ -54,7 +52,7 @@ int main() {
 	cout << endl;
 
 	// Sort the vector
-	vector<float> sortedVector = QuickSort::sortVector(floatVector, maxSize-1);
+	vector<float> sortedVector = QuickSort::sortVector(floatVector, 0, maxSize-1);
 
 	cout << endl;
 	cout << "Final vector:" << endl;
