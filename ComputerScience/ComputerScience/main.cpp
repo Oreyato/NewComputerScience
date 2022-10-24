@@ -34,11 +34,13 @@ int main() {
 	vector<float> floatVector;
 	// Initialise the vector's max size
 	int maxSize = 10;
+	// Initialise the value's range
+	float range = 100.0f;
 	// And initialise it
-	initVector(floatVector, maxSize, -1000000.0f, 1000000.0f);
+	initVector(floatVector, maxSize, -range, range);
 
 	// Sort the vector
-	vector<float> sortedVector = QuickSort::sortVector(floatVector, maxSize);
+	vector<float> sortedVector = QuickSort::sortVector(floatVector, maxSize-1);
 
 	// Print vector
 	for (int i = 0; i < maxSize; i++)
