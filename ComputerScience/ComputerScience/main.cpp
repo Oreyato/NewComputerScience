@@ -33,20 +33,37 @@ int main() {
 	// Create the vector to sort
 	vector<float> floatVector;
 	// Initialise the vector's max size
-	int maxSize = 10;
+	int maxSize = 5;
 	// Initialise the value's range
-	float range = 100.0f;
+	float range = 50.0f;
 	// And initialise it
 	initVector(floatVector, maxSize, -range, range);
+	 
+	cout << "Initial vector:" << endl;
+	// Print initial vector
+	for (int i = 0; i < maxSize; i++)
+	{
+		cout << floatVector[i] << " ";
+	}
+
+	cout << endl;
+	cout << endl;
+	cout << "===============" << endl;
+	cout << endl;
 
 	// Sort the vector
 	vector<float> sortedVector = QuickSort::sortVector(floatVector, maxSize-1);
 
+	cout << endl;
+	cout << "Final vector:" << endl;
 	// Print vector
 	for (int i = 0; i < maxSize; i++)
 	{
 		cout << sortedVector[i] << " ";
 	}
+
+	cout << endl;
+	cout << endl;
 
 	return 0;
 }
