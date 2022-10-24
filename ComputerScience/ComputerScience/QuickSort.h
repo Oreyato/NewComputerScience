@@ -10,10 +10,9 @@ public:
 	~QuickSort();
 
 	static void move(std::vector<float>& vectorP, int fromIndexP, int toIndexP);
-	static std::vector<std::vector<float>> partition(std::vector<float> vectorP, int minIndexP, int pivotIndexP);
+	static int partition(std::vector<float> vectorP, int minIndexP, int pivotIndexP);
 
-	static std::vector<float> sortVector(std::vector<float> vectorP, int pivotIndexP);
-
+	static void sortVector(std::vector<float>& vectorP, int minIndexP, int pivotIndexP);
 
 private:
 	float executionTime{ 0 }; // <--- we will have to remove the "static" if we really want to use this

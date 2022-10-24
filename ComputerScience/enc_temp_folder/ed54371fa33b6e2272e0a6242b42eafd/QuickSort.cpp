@@ -55,9 +55,9 @@ int QuickSort::partition(std::vector<float> vectorP, int minIndexP, int pivotInd
 			move(vectorP, newPivotIndex, i);
 		}
 	}
-	move(vectorP, newPivotIndex + 1, pivotIndexP);
+	move(vectorP, newPivotIndex, pivotIndexP);
 
-	return newPivotIndex + 1;
+	return newPivotIndex;
 }
 
 void QuickSort::sortVector(std::vector<float>& vectorP, int minIndexP, int pivotIndexP)

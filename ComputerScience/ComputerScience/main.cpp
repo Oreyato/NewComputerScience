@@ -52,14 +52,14 @@ int main() {
 	cout << endl;
 
 	// Sort the vector
-	vector<float> sortedVector = QuickSort::sortVector(floatVector, 0, maxSize-1);
+	QuickSort::sortVector(floatVector, 0, maxSize-1);
 
 	cout << endl;
 	cout << "Final vector:" << endl;
 	// Print vector
 	for (int i = 0; i < maxSize; i++)
 	{
-		cout << sortedVector[i] << " ";
+		cout << floatVector[i] << " ";
 	}
 
 	cout << endl;
