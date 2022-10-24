@@ -52,7 +52,7 @@ int main() {
 	cout << endl;
 
 	// Sort the vector
-	QuickSort::sortVector(floatVector, 0, maxSize-1);
+	QuickSort::sortVector(floatVector, 0, maxSize - 1);
 
 	cout << endl;
 	cout << "Final vector:" << endl;

@@ -17,18 +17,13 @@ void QuickSort::move(std::vector<float>& vectorP, int fromIndexP, int toIndexP)
 {
 	// Get all three values
 	float fromValue = vectorP[fromIndexP];
-	float fromMinusOneIndexValue = vectorP[fromIndexP];
-	if (fromIndexP != 0) {
-		fromMinusOneIndexValue = vectorP[fromIndexP - 1];
-	}
+	float fromMinusOneIndexValue = vectorP[fromIndexP - 1];
 	float toValue = vectorP[toIndexP];
 
 	// Set the right values at the right position
 	vectorP[toIndexP] = fromMinusOneIndexValue;
 	vectorP[fromIndexP] = toValue;
-	if (fromIndexP != 0) {
-		vectorP[fromIndexP - 1] = fromValue;
-	}
+	vectorP[fromIndexP - 1] = fromValue;
 }
 
 /**
@@ -39,23 +34,29 @@ void QuickSort::move(std::vector<float>& vectorP, int fromIndexP, int toIndexP)
  * @param pivotIndexP: index of the pivot
  * @return new pivot's index
  */
-int QuickSort::partition(std::vector<float> vectorP, int minIndexP, int pivotIndexP) {
+int QuickSort::partition(std::vector<float>& vectorP, int minIndexP, int pivotIndexP) {
 	// Prepare the returned pivot index
-	int newPivotIndex = minIndexP - 1;
+	int newPivotIndex = pivotIndexP;
 	// Get pivot's value
 	float pivotValue = vectorP[pivotIndexP];
 	// Set maximum i
 	int maxI = pivotIndexP - 1;
+	// Set minimum i
+	int minI = minIndexP - 1;
 
 	// Browse the list
 	for (int i = minIndexP; i <= maxI; i++)
 	{
-		if (pivotValue >= vectorP[i]) {
-			newPivotIndex++;
+		// If the pivot's value is greater than the current element's value
+		if (pivotValue > vectorP[i]) {
 			move(vectorP, newPivotIndex, i);
+			// Update the pivot index
+			newPivotIndex--;
+			// Update the lowest element index
+			minI++;
 		}
 	}
-	move(vectorP, newPivotIndex + 1, pivotIndexP);
+	move(vectorP, minI + 1, pivotIndexP);
 
 	return newPivotIndex + 1;
 }
@@ -69,6 +70,13 @@ void QuickSort::sortVector(std::vector<float>& vectorP, int minIndexP, int pivot
 		// Sort the part at the pivot's left
 		sortVector(vectorP, minIndexP, newPivotIndex - 1);
 		// Sort the part at the pivot's right
-		sortVector(vectorP, newPivotIndex, pivotIndexP);
+		sortVector(vectorP, newPivotIndex + 1, pivotIndexP);
+
+		// Print vector
+		for (int i = 0; i < vectorP.size(); i++)
+		{
+			std::cout << vectorP[i] << " ";
+		}
+		std::cout << std::endl;
 	}
 }
