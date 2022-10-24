@@ -31,14 +31,16 @@ int main() {
 	// Initialise randomness seed
 	srand((unsigned)time(0));
 	// Create the vector to sort
-	vector<float> floatVector;
+	//vector<float> floatVector;
 	// Initialise the vector's max size
 	int maxSize = 5;
 	// Initialise the value's range
 	float range = 50.0f;
 	// And initialise it
-	initVector(floatVector, maxSize, -range, range);
+	//initVector(floatVector, maxSize, -range, range);
 	 
+	vector<float> floatVector = {36, 19, -25, 49, -4};
+
 	cout << "Initial vector:" << endl;
 	// Print initial vector
 	for (int i = 0; i < maxSize; i++)
