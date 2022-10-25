@@ -40,25 +40,24 @@ int QuickSort::partition(std::vector<float>& vectorP, int minIndexP, int pivotIn
 	// Get pivot's value
 	float pivotValue = vectorP[pivotIndexP];
 	// Set maximum i
-	int maxI = pivotIndexP - 1;
+	int maxI = pivotIndexP;
 	// Set minimum i
-	int minI = minIndexP - 1;
+	int minI = minIndexP;
 
 	// Browse the list
-	for (int i = minIndexP; i <= maxI; i++)
+	while (minI < newPivotIndex)
 	{
-		// If the pivot's value is greater than the current element's value
-		if (pivotValue > vectorP[i]) {
-			move(vectorP, newPivotIndex, i);
+		// If the pivot's value is lower than the current element's value
+		if (pivotValue < vectorP[minI]) {
+			move(vectorP, newPivotIndex, minI);
 			// Update the pivot index
 			newPivotIndex--;
-			// Update the lowest element index
-			minI++;
 		}
+		// Update the lowest element index
+		minI++;
 	}
-	move(vectorP, minI + 1, pivotIndexP);
 
-	return newPivotIndex + 1;
+	return newPivotIndex;
 }
 
 void QuickSort::sortVector(std::vector<float>& vectorP, int minIndexP, int pivotIndexP)
@@ -67,10 +66,11 @@ void QuickSort::sortVector(std::vector<float>& vectorP, int minIndexP, int pivot
 	if (minIndexP < pivotIndexP) {
 		// Get the pivot position after partitionning
 		int newPivotIndex = partition(vectorP, minIndexP, pivotIndexP);
+		std::cout << "New pivot: " << newPivotIndex << std::endl;
 		// Sort the part at the pivot's left
 		sortVector(vectorP, minIndexP, newPivotIndex - 1);
 		// Sort the part at the pivot's right
-		sortVector(vectorP, newPivotIndex + 1, pivotIndexP);
+		sortVector(vectorP, newPivotIndex, pivotIndexP);
 
 		// Print vector
 		for (int i = 0; i < vectorP.size(); i++)
