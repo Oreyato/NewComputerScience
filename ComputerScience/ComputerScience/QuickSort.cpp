@@ -78,5 +78,4 @@ void QuickSort::sortVector(std::vector<float>& vectorP, int minIndexP, int pivot
 			std::cout << vectorP[i] << " ";
 		}
 		std::cout << std::endl;
-	}
 }
