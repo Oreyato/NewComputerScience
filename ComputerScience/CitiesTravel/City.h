@@ -14,9 +14,10 @@ public:
 	void setName(std::string nameP) { name = nameP; }
 	std::string getName() { return name; }
 
-	void getAllConnections();
-	void getConnectionToCity(std::string cityName);
-	void addConnection();
+	std::vector<Connection*> getAllConnections() { return connections; }
+	Connection* getConnectionToCity(std::string cityName);
+
+	void addConnection(Connection* connectionP);
 
 private:
 	std::string name;

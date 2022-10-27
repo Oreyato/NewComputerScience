@@ -10,14 +10,18 @@ City::~City()
 {
 }
 
-void City::getAllConnections()
+Connection* City::getConnectionToCity(std::string cityName)
 {
+	for (auto i = 0; i < connections.size(); i++) {
+		if (connections[i]->getToCity() == cityName) {
+			return connections[i];
+		}
+	}
+
+	// SHOULD ADD SOMETHING TO HANDLE ERRORS IF THE CITY ISN'T LINKED TO THIS ONE
 }
 
-void City::getConnectionToCity(std::string cityName)
+void City::addConnection(Connection* connectionP)
 {
-}
-
-void City::addConnection()
-{
+	connections.push_back(connectionP);
 }
