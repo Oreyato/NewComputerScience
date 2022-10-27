@@ -57,18 +57,38 @@ vector<City> initGraph() {
 	// Add the city to the vector
 	cities.push_back(cityE);
 
+	return cities;
 }
 
-vector<string> path() {
+vector<string> findPath(const vector<City>& citiesP, std::string startingCityNameP) {
+	vector<string> test{ "T", "E", "S", "T"};
 
+	return test;
 }
 
-float distanceFromPath() {
+float distanceFromPath(const vector<City>& citiesP, const vector<string>& pathP) {
 
+	return 5;
+}
+
+void displayResults(string startingCityP, const vector<string>& pathP, float distanceP) {
+	cout << "Starting from \"" << startingCityP << "\", the best path the visit all other cities is: ";
+
+	for (int i = 0; i < pathP.size() - 1; i++) {
+		cout << pathP[i] << " > ";
+	}
+	cout << pathP[pathP.size() - 1];
+	cout << ", traveling " << distanceP << " units." << endl;
 }
 
 int main() {
-	vector<City> cities = initGraph();
+	const string startingCity = "A";
 
-	return;
+	const vector<City> cities = initGraph();
+	
+	const vector<string> bestPath = findPath(cities, startingCity);
+	float bestDistance = distanceFromPath(cities, bestPath);
+	displayResults(startingCity, bestPath, bestDistance);
+
+	return 0;
 }

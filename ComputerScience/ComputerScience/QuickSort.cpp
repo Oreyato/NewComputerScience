@@ -60,8 +60,7 @@ int QuickSort::partition(std::vector<float>& vectorP, int minIndexP, int pivotIn
 	return newPivotIndex;
 }
 
-void QuickSort::sortVector(std::vector<float>& vectorP, int minIndexP, int pivotIndexP)
-{
+void QuickSort::sortVector(std::vector<float>& vectorP, int minIndexP, int pivotIndexP) {
 	// Compare indexes
 	if (minIndexP < pivotIndexP) {
 		// Get the pivot position after partitionning
@@ -78,4 +77,5 @@ void QuickSort::sortVector(std::vector<float>& vectorP, int minIndexP, int pivot
 			std::cout << vectorP[i] << " ";
 		}
 		std::cout << std::endl;
+	}
 }
