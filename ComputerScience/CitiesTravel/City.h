@@ -15,7 +15,7 @@ public:
 	std::string getName() { return name; }
 
 	std::vector<Connection*> getAllConnections() { return connections; }
-	Connection* getConnectionToCity(std::string cityName);
+	Connection* getConnectionToCity(City targetCityP);
 
 	void addConnection(Connection* connectionP);
 

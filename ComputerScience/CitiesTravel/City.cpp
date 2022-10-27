@@ -10,10 +10,12 @@ City::~City()
 {
 }
 
-Connection* City::getConnectionToCity(std::string cityName)
+Connection* City::getConnectionToCity(City targetCityP)
 {
+	std::string targetCityName = targetCityP.getName();
+
 	for (auto i = 0; i < connections.size(); i++) {
-		if (connections[i]->getToCity() == cityName) {
+		if (connections[i]->getToCity() == targetCityName) {
 			return connections[i];
 		}
 	}

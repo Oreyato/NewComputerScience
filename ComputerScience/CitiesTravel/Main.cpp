@@ -60,24 +60,33 @@ vector<City> initGraph() {
 	return cities;
 }
 
-vector<string> findPath(const vector<City>& citiesP, std::string startingCityNameP, std::string endingCityNameP) {
-	vector<string> test{ "T", "E", "S", "T"};
+vector<City> findPath(const vector<City>& citiesP, std::string startingCityNameP, std::string endingCityNameP) {
+	// But :
+	vector<City> test{ citiesP[0], citiesP[1], citiesP[4], citiesP[3], citiesP[2], citiesP[0]};
+	// I didn't implement the algorithm, I just verified that everything else work. And it does
 
 	return test;
 }
 
-float distanceFromPath(const vector<City>& citiesP, const vector<string>& pathP) {
+float distanceFromPath(vector<City>& sortedCitiesP) {
+	float distance{ 0 };
 
-	return 5;
+	for (auto i = 0; i < sortedCitiesP.size() - 1; i++) {
+		distance += sortedCitiesP[i].getConnectionToCity(sortedCitiesP[i+1])->getDistance();
+	}
+
+	return distance;
 }
 
-void displayResults(string startingCityP, const vector<string>& pathP, float distanceP) {
+void displayResults(string startingCityP, vector<City>& sortedCitiesP, float distanceP) {
+	auto pathLength = sortedCitiesP.size() - 1;
+
 	cout << "Starting from \"" << startingCityP << "\", the best path the visit all other cities is: ";
 
-	for (int i = 0; i < pathP.size() - 1; i++) {
-		cout << pathP[i] << " > ";
+	for (auto i = 0; i < pathLength; i++) {
+		cout << sortedCitiesP[i].getName() << " > ";
 	}
-	cout << pathP[pathP.size() - 1];
+	cout << sortedCitiesP[pathLength].getName();
 	cout << ", traveling " << distanceP << " units." << endl;
 }
 
@@ -85,11 +94,11 @@ int main() {
 	const string startingCity = "A";
 	const string endingCity = startingCity;
 
-	const vector<City> cities = initGraph();
+	vector<City> cities = initGraph();
 	
-	const vector<string> bestPath = findPath(cities, startingCity, endingCity);
-	float bestDistance = distanceFromPath(cities, bestPath);
-	displayResults(startingCity, bestPath, bestDistance);
+	vector<City> sortedPath = findPath(cities, startingCity, endingCity);
+	float bestDistance = distanceFromPath(sortedPath);
+	displayResults(startingCity, sortedPath, bestDistance);
 
 	return 0;
 }

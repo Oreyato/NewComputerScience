@@ -2,7 +2,7 @@
 
 Connection::Connection(std::string fromCityP, std::string toCityP, float distanceP):
 	fromCity{fromCityP},
-	toCity{toCity},
+	toCity{toCityP},
 	distance{distanceP}
 {
 }

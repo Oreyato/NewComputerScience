@@ -22,7 +22,6 @@ private:
 	std::string toCity;
 
 	float distance{ 0.0f };
-
 };
 
 #endif // CONNECTION_H
