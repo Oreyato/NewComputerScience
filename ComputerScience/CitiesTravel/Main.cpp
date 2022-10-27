@@ -60,7 +60,7 @@ vector<City> initGraph() {
 	return cities;
 }
 
-vector<string> findPath(const vector<City>& citiesP, std::string startingCityNameP) {
+vector<string> findPath(const vector<City>& citiesP, std::string startingCityNameP, std::string endingCityNameP) {
 	vector<string> test{ "T", "E", "S", "T"};
 
 	return test;
@@ -83,10 +83,11 @@ void displayResults(string startingCityP, const vector<string>& pathP, float dis
 
 int main() {
 	const string startingCity = "A";
+	const string endingCity = startingCity;
 
 	const vector<City> cities = initGraph();
 	
-	const vector<string> bestPath = findPath(cities, startingCity);
+	const vector<string> bestPath = findPath(cities, startingCity, endingCity);
 	float bestDistance = distanceFromPath(cities, bestPath);
 	displayResults(startingCity, bestPath, bestDistance);
 
