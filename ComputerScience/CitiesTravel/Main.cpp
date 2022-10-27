@@ -60,10 +60,24 @@ vector<City> initGraph() {
 	return cities;
 }
 
-vector<City> findPath(const vector<City>& citiesP, std::string startingCityNameP, std::string endingCityNameP) {
-	// But :
-	vector<City> test{ citiesP[0], citiesP[1], citiesP[4], citiesP[3], citiesP[2], citiesP[0]};
-	// I didn't implement the algorithm, I just verified that everything else work. And it does
+vector<City> findPath(vector<City>& citiesP, std::string startingCityNameP, std::string endingCityNameP) {
+	//vvv REF THIS INTO A FUNCTION ===================================
+	//v Get cities index from names (string) =========================
+	int startingCityIndex{ -1 };
+	int endingCityIndex{ -1 };
+
+	for (auto i = 0; i < citiesP.size(); i++) {
+		if (citiesP[i].getName() == startingCityNameP) {
+			startingCityIndex = i;
+		}
+		if (citiesP[i].getName() == endingCityNameP) {
+			endingCityIndex = i;
+		}
+	}
+	//^ Get cities index from names (string) =========================
+	//^^^ REF THIS INTO A FUNCTION ===================================
+
+	vector<City> test{ citiesP[startingCityIndex], citiesP[1], citiesP[4], citiesP[3], citiesP[2], citiesP[endingCityIndex]};
 
 	return test;
 }
