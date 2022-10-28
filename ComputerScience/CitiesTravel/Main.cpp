@@ -1,4 +1,4 @@
-#include "City.h"
+#include "Cities.h"
 
 #include <iostream>
 
@@ -7,9 +7,9 @@ using std::endl;
 using std::string;
 using std::vector;
 
-vector<City> initGraph() {
+Cities initGraph() {
 	// Init vector
-	vector<City> cities;
+	vector<City> citiesVec;
 
 	//v A city =======================================================
 	Connection* fromAToB = new Connection{"A", "B", 2.0f};
@@ -17,7 +17,7 @@ vector<City> initGraph() {
 	vector<Connection*> connectionsFromA = { fromAToB, fromAToC };
 	City cityA{ "A", connectionsFromA };
 	// Add the city to the vector
-	cities.push_back(cityA);
+	citiesVec.push_back(cityA);
 
 	//v B city =======================================================
 	Connection* fromBToA = new Connection{ "B", "A", 2.0f };
@@ -27,7 +27,7 @@ vector<City> initGraph() {
 	vector<Connection*> connectionsFromB = { fromBToA, fromBToC, fromBToD, fromBToE };
 	City cityB{ "B", connectionsFromB };
 	// Add the city to the vector
-	cities.push_back(cityB);
+	citiesVec.push_back(cityB);
 
 	//v C city =======================================================
 	Connection* fromCToA = new Connection{ "C", "A", 2.0f };
@@ -37,7 +37,7 @@ vector<City> initGraph() {
 	vector<Connection*> connectionsFromC = { fromCToA, fromCToB, fromCToD, fromCToE };
 	City cityC{ "C", connectionsFromC };
 	// Add the city to the vector
-	cities.push_back(cityC);
+	citiesVec.push_back(cityC);
 
 	//v D city =======================================================
 	Connection* fromDToB = new Connection{ "D", "B", 3.0f };
@@ -46,7 +46,7 @@ vector<City> initGraph() {
 	vector<Connection*> connectionsFromD = { fromDToB, fromDToC, fromDToE };
 	City cityD{ "D", connectionsFromD };
 	// Add the city to the vector
-	cities.push_back(cityD);
+	citiesVec.push_back(cityD);
 
 	//v E city =======================================================
 	Connection* fromEToB = new Connection{ "E", "B", 1.0f };
@@ -55,29 +55,21 @@ vector<City> initGraph() {
 	vector<Connection*> connectionsFromE = { fromEToB, fromEToC, fromEToD };
 	City cityE{ "E", connectionsFromE };
 	// Add the city to the vector
-	cities.push_back(cityE);
+	citiesVec.push_back(cityE);
+
+	Cities cities{ citiesVec };
 
 	return cities;
 }
 
-vector<City> findPath(vector<City>& citiesP, std::string startingCityNameP, std::string endingCityNameP) {
-	//vvv REF THIS INTO A FUNCTION ===================================
-	//v Get cities index from names (string) =========================
-	int startingCityIndex{ -1 };
-	int endingCityIndex{ -1 };
+vector<City> findPath(Cities& citiesP, std::string startingCityNameP, std::string endingCityNameP) {
+	// Get cities index from names
+	int startingCityIndex{ citiesP.getCityIndexFromName(startingCityNameP) };
+	int endingCityIndex{ citiesP.getCityIndexFromName(endingCityNameP) };
 
-	for (auto i = 0; i < citiesP.size(); i++) {
-		if (citiesP[i].getName() == startingCityNameP) {
-			startingCityIndex = i;
-		}
-		if (citiesP[i].getName() == endingCityNameP) {
-			endingCityIndex = i;
-		}
-	}
-	//^ Get cities index from names (string) =========================
-	//^^^ REF THIS INTO A FUNCTION ===================================
+	vector<City> citiesVec = citiesP.getCities();
 
-	vector<City> test{ citiesP[startingCityIndex], citiesP[1], citiesP[4], citiesP[3], citiesP[2], citiesP[endingCityIndex]};
+	vector<City> test{ citiesVec[startingCityIndex], citiesVec[1], citiesVec[4], citiesVec[3], citiesVec[2], citiesVec[endingCityIndex]};
 
 	return test;
 }
@@ -108,7 +100,7 @@ int main() {
 	const string startingCity = "A";
 	const string endingCity = startingCity;
 
-	vector<City> cities = initGraph();
+	Cities cities = initGraph();
 	
 	vector<City> sortedPath = findPath(cities, startingCity, endingCity);
 	float bestDistance = distanceFromPath(sortedPath);

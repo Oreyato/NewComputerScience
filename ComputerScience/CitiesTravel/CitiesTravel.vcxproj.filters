@@ -20,12 +20,18 @@
     <ClCompile Include="City.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Cities.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Connection.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="City.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Cities.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
